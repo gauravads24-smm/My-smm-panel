@@ -1,117 +1,221 @@
- html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My SMM Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17183f">
+<title>My SMM Panel | Social Marketing</title>
 <style>
+:root{--purple:#6854ed;--dark:#17183f;--bg:#f5f6fc;--muted:#737b96}
 *{box-sizing:border-box}
-body{margin:0;background:#f3f5fb;color:#202944;font-family:Arial,sans-serif}
-header{background:#25215c;color:white;padding:22px 18px}
-header h1{margin:0;font-size:25px}
-header p{margin:8px 0 0;color:#dcdafa}
-nav{background:white;padding:14px;display:flex;gap:18px;overflow:auto}
-nav a{color:#4139a4;text-decoration:none;font-weight:bold;white-space:nowrap}
-main{max-width:850px;margin:auto;padding:18px}
-.hero{background:linear-gradient(120deg,#5145cd,#8d65e8);color:white;padding:24px;border-radius:16px}
-.hero h2{margin-top:0}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}
-.card{background:white;padding:17px;border-radius:13px;box-shadow:0 3px 12px #2029440b}
-.stat{font-size:23px;font-weight:bold;color:#5145cd;margin-top:8px}
-h3{margin-top:0}
-label{display:block;margin:14px 0 7px;font-weight:bold}
-input,select,button{width:100%;padding:12px;border:1px solid #d8dbea;border-radius:8px;font-size:15px}
-button{background:#5145cd;color:white;border:0;font-weight:bold;margin-top:15px;cursor:pointer}
-button:hover{background:#4034b2}
-.small{font-size:13px;color:#69728b;line-height:1.6}
-#notice{margin-top:12px;color:#147443;font-weight:bold}
-.order{border-bottom:1px solid #eee;padding:12px 0;overflow-wrap:anywhere}
-footer{text-align:center;padding:25px;color:#737b91}
-@media(min-width:600px){.stats{grid-template-columns:repeat(4,1fr)}}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:#222747;font-family:Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+.layout{min-height:100vh;display:flex}
+.sidebar{width:220px;background:var(--dark);color:white;padding:25px 15px;flex-shrink:0}
+.logo{font-size:23px;font-weight:800;padding:6px 8px 28px}
+.logo span{color:#a89bff}
+.nav a{display:block;padding:13px 12px;margin:5px 0;border-radius:9px;color:#d5d6ef}
+.nav a.active,.nav a:hover{background:var(--purple);color:white}
+.side-note{font-size:12px;line-height:1.6;color:#b8b9d6;margin:30px 10px}
+main{flex:1;min-width:0;padding:25px;max-width:1500px;margin:auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+.topbar p{margin:5px 0;color:var(--muted);font-size:14px}
+.pill{background:#e8e5ff;color:#5542d4;padding:9px 13px;border-radius:25px;font-size:12px;font-weight:bold}
+.hero{background:linear-gradient(115deg,#4937cb,#8c68f7);color:white;border-radius:20px;padding:30px;margin-bottom:20px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(27px,4vw,42px);line-height:1.12;margin:12px 0}
+.hero p{max-width:490px;line-height:1.7;color:#efedff}
+.hero-tag{font-size:12px;font-weight:bold;letter-spacing:1px}
+.hero-art{position:absolute;right:30px;top:20px;font-size:76px;opacity:.8}
+.btn{display:inline-block;border:0;border-radius:9px;padding:12px 16px;font-weight:bold;cursor:pointer}
+.btn-light{background:white;color:#5140c8}
+.btn-purple{background:var(--purple);color:white;width:100%;margin-top:12px}
+.btn-purple:hover{background:#5140d2}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:20px 0}
+.card{background:white;border:1px solid #e9eaf4;border-radius:15px;padding:20px;box-shadow:0 5px 18px #20264a08;min-width:0}
+.stat-label{font-size:13px;color:var(--muted)}
+.stat-value{font-size:25px;font-weight:800;margin-top:10px}
+.section-title{font-size:22px;margin:30px 0 6px}
+.sub{font-size:14px;color:var(--muted);line-height:1.6;margin-top:5px}
+.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0}
+.service-icon{width:44px;height:44px;display:grid;place-items:center;background:#eeebff;border-radius:12px;font-size:23px;margin-bottom:15px}
+.service h3{font-size:16px;margin:0 0 8px}
+.service p{font-size:13px;line-height:1.6;color:var(--muted);min-height:60px}
+.bottom-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px;margin-top:24px}
+label{display:block;font-size:13px;font-weight:bold;margin:14px 0 7px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #dfe1ef;border-radius:9px;background:white;color:#222747}
+textarea{resize:vertical;min-height:90px}
+input:focus,select:focus,textarea:focus{outline:2px solid #c7c0ff;border-color:var(--purple)}
+.notice{font-size:13px;line-height:1.5;color:#147447;margin-top:12px}
+.order{padding:14px 0;border-bottom:1px solid #eeeef6;font-size:13px;line-height:1.6;overflow-wrap:anywhere}
+.status{display:inline-block;background:#e7f8ed;color:#147447;padding:4px 8px;border-radius:20px;font-size:11px}
+footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}
+.mobile-nav{display:none}
+@media(max-width:900px){
+ .sidebar{width:180px}
+ main{padding:18px}
+ .services{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .bottom-grid{grid-template-columns:1fr}
+ .hero-art{font-size:55px;right:15px;top:25px}
+}
+@media(max-width:560px){
+ .layout{display:block}
+ .sidebar{display:none}
+ main{padding:14px}
+ .topbar{align-items:flex-start}
+ .topbar h2{font-size:20px;margin:0}
+ .pill{font-size:10px}
+ .hero{padding:23px 18px}
+ .hero-art{font-size:35px;right:13px;top:20px}
+ .hero h1{font-size:29px;max-width:270px}
+ .hero p{font-size:14px;max-width:100%}
+ .stats{gap:9px}
+ .stats .card{padding:13px}
+ .stat-value{font-size:21px}
+ .services{gap:10px}
+ .service{padding:14px}
+ .service p{min-height:80px}
+ .card{padding:16px}
+ .section-title{font-size:20px}
+ .mobile-nav{display:flex;position:sticky;top:0;z-index:2;overflow:auto;background:white;border-bottom:1px solid #e9eaf4;padding:11px;gap:18px;white-space:nowrap}
+ .mobile-nav a{font-size:12px;font-weight:bold;color:#5745cf}
+}
 </style>
 </head>
 <body>
-<header>
-<h1>My SMM Panel</h1>
-<p>Aapka Social Media Marketing Dashboard</p>
-</header>
-<nav>
-<a href="#home">Home</a>
-<a href="#services">Services</a>
-<a href="#neworder">New Order</a>
-<a href="#history">Order History</a>
+<div class="layout">
+<aside class="sidebar">
+ <div class="logo">✦ My<span>SMM</span>Panel</div>
+ <nav class="nav">
+  <a class="active" href="#home">▦ Dashboard</a>
+  <a href="#services">◇ Services</a>
+  <a href="#neworder">＋ New Order</a>
+  <a href="#history">▤ Order History</a>
+  <a href="#about">ⓘ About</a>
+ </nav>
+ <div class="side-note">Your social marketing workspace.<br><br>Demo version · Free to explore</div>
+</aside>
+<div style="flex:1;min-width:0">
+<nav class="mobile-nav">
+ <a href="#home">Home</a>
+ <a href="#services">Services</a>
+ <a href="#neworder">New Order</a>
+ <a href="#history">Orders</a>
 </nav>
 <main>
+<header class="topbar">
+ <div><h2>Dashboard</h2><p>Welcome! Manage your marketing services.</p></div>
+ <span class="pill">✦ DEMO PANEL</span>
+</header>
+
 <section class="hero" id="home">
-<h2>Welcome to My SMM Panel 🚀</h2>
-<p>Apni social media marketing services ek jagah manage karein.</p>
-<p class="small" style="color:white">DEMO VERSION — koi real order ya payment nahi hoga.</p>
+ <div class="hero-tag">YOUR GROWTH STARTS HERE</div>
+ <h1>Create Better Content.<br>Grow Your Brand.</h1>
+ <p>Simple tools for planning content, managing campaigns and understanding your social media performance.</p>
+ <a class="btn btn-light" href="#services">Explore Services →</a>
+ <div class="hero-art" aria-hidden="true">↗</div>
 </section>
 
 <section class="stats">
-<div class="card">Services<div class="stat">4</div></div>
-<div class="card">Demo Orders<div class="stat" id="total">0</div></div>
-<div class="card">Demo Balance<div class="stat">₹0</div></div>
-<div class="card">Status<div class="stat" style="font-size:18px">Demo</div></div>
+ <div class="card"><div class="stat-label">Available Services</div><div class="stat-value">04</div></div>
+ <div class="card"><div class="stat-label">Demo Orders</div><div class="stat-value" id="total">00</div></div>
+ <div class="card"><div class="stat-label">Demo Balance</div><div class="stat-value">₹0</div></div>
 </section>
 
-<section class="card" id="services">
-<h3>📋 Marketing Services</h3>
-<p>Social Media Post Design — ₹199 / post</p>
-<p>Content Calendar — ₹299 / plan</p>
-<p>Campaign Setup — ₹499 / campaign</p>
-<p>Analytics Report — ₹149 / report</p>
-<p class="small">Ye sirf sample prices hain, asli offers nahi.</p>
+<h2 class="section-title" id="services">Our Services</h2>
+<p class="sub">Practical tools to support your social media work.</p>
+<section class="services">
+ <article class="card service">
+  <div class="service-icon">🎨</div><h3>Post Design</h3>
+  <p>Creative graphics for your brand and social posts.</p>
+  <a class="btn btn-purple" href="#neworder" data-service="Post Design">View Service</a>
+ </article>
+ <article class="card service">
+  <div class="service-icon">🗓️</div><h3>Content Calendar</h3>
+  <p>Plan topics and organise your publishing schedule.</p>
+  <a class="btn btn-purple" href="#neworder" data-service="Content Calendar">View Service</a>
+ </article>
+ <article class="card service">
+  <div class="service-icon">📣</div><h3>Campaign Setup</h3>
+  <p>Organise campaign goals, audience and creative assets.</p>
+  <a class="btn btn-purple" href="#neworder" data-service="Campaign Setup">View Service</a>
+ </article>
+ <article class="card service">
+  <div class="service-icon">📊</div><h3>Analytics Report</h3>
+  <p>Review engagement metrics and campaign performance.</p>
+  <a class="btn btn-purple" href="#neworder" data-service="Analytics Report">View Service</a>
+ </article>
 </section>
 
-<section class="card" id="neworder" style="margin-top:18px">
-<h3>🛒 Demo Order Form</h3>
-<form id="orderForm">
-<label for="service">Service chunein</label>
-<select id="service" required>
-<option value="Social Media Post Design">Post Design — ₹199</option>
-<option value="Content Calendar">Content Calendar — ₹299</option>
-<option value="Campaign Setup">Campaign Setup — ₹499</option>
-<option value="Analytics Report">Analytics Report — ₹149</option>
-</select>
-<label for="details">Order details</label>
-<input id="details" placeholder="Jaise: Instagram post design" required maxlength="200">
-<button type="submit">Create Demo Order</button>
-</form>
-<div id="notice" role="status"></div>
+<section class="bottom-grid">
+ <div class="card" id="neworder">
+  <h2 style="margin-top:0">＋ New Demo Order</h2>
+  <p class="sub">Try the form. It will not charge you or contact any provider.</p>
+  <form id="orderForm">
+   <label for="service">Choose a service</label>
+   <select id="service" required>
+    <option>Post Design</option>
+    <option>Content Calendar</option>
+    <option>Campaign Setup</option>
+    <option>Analytics Report</option>
+   </select>
+   <label for="details">Project details</label>
+   <textarea id="details" maxlength="300" placeholder="Describe what you need..." required></textarea>
+   <button class="btn btn-purple" type="submit">Create Demo Order →</button>
+  </form>
+  <div class="notice" id="notice" role="status"></div>
+ </div>
+ <div class="card" id="history">
+  <h2 style="margin-top:0">Order History</h2>
+  <p class="sub">Orders created in this browser session.</p>
+  <div id="orders"><p class="sub">No demo orders yet. Try the form.</p></div>
+ </div>
 </section>
 
-<section class="card" id="history" style="margin-top:18px">
-<h3>📦 Demo Order History</h3>
-<div id="orders"><p class="small">Abhi koi demo order nahi hai.</p></div>
+<section class="card" id="about" style="margin-top:20px">
+ <h2 style="margin-top:0">About this demo</h2>
+ <p class="sub">A starter design for legitimate social media marketing services. You can customise the brand name, colours and service descriptions.</p>
+ <p class="sub"><strong>Demo only:</strong> no real payments, customer accounts, permanent storage or provider API is connected.</p>
 </section>
+<footer>My SMM Panel · Create · Manage · Grow</footer>
 </main>
-<footer>My SMM Panel © 2026 · Learning Demo</footer>
+</div>
+</div>
+
 <script>
-let orders=[];
-const prices={
-"Social Media Post Design":199,
-"Content Calendar":299,
-"Campaign Setup":499,
-"Analytics Report":149
-};
-document.getElementById("orderForm").addEventListener("submit",function(e){
-e.preventDefault();
-const service=document.getElementById("service").value;
-const details=document.getElementById("details").value.trim();
-if(!details)return;
-orders.unshift({service,details,id:orders.length+1});
-document.getElementById("total").textContent=orders.length;
-document.getElementById("notice").textContent="Demo order successfully created!";
-document.getElementById("orders").innerHTML="";
-orders.forEach(function(o){
-const item=document.createElement("div");
-item.className="order";
-const title=document.createElement("strong");
-title.textContent="Demo Order #"+o.id+" — "+o.service;
-const info=document.createElement("p");
-info.textContent=o.details+" | Sample price: ₹"+prices[o.service]+" | Status: Demo only";
-item.append(title,
+const orders=[];
+const form=document.getElementById("orderForm");
+const orderList=document.getElementById("orders");
+document.querySelectorAll("[data-service]").forEach(link=>{
+ link.addEventListener("click",()=>{
+  document.getElementById("service").value=link.dataset.service;
+ });
+});
+form.addEventListener("submit",event=>{
+ event.preventDefault();
+ const service=document.getElementById("service").value;
+ const details=document.getElementById("details").value.trim();
+ if(!details)return;
+ orders.unshift({id:orders.length+1,service,details});
+ document.getElementById("total").textContent=String(orders.length).padStart(2,"0");
+ document.getElementById("notice").textContent="Demo order created successfully!";
+ orderList.replaceChildren();
+ orders.forEach(order=>{
+  const row=document.createElement("div");
+  row.className="order";
+  const title=document.createElement("strong");
+  title.textContent="Demo #"+String(order.id).padStart(3,"0")+" · "+order.service;
+  const detail=document.createElement("p");
+  detail.textContent=order.details;
+  const status=document.createElement("span");
+  status.className="status";
+  status.textContent="Demo only";
+  row.append(title,detail,status);
+  orderList.appendChild(row);
+ });
+ form.reset();
+});
 </script>
 </body>
 </html>
