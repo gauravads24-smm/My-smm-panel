@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
@@ -111,11 +111,7 @@ const title=document.createElement("strong");
 title.textContent="Demo Order #"+o.id+" — "+o.service;
 const info=document.createElement("p");
 info.textContent=o.details+" | Sample price: ₹"+prices[o.service]+" | Status: Demo only";
-item.append(title,info);
-document.getElementById("orders").appendChild(item);
-});
-this.reset();
-});
+item.append(title,
 </script>
 </body>
 </html>
