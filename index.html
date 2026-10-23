@@ -210,28 +210,6 @@ form.addEventListener("submit", (event) => {
 
   window.open(whatsappURL, "_blank");
 });
- const service=document.getElementById("service").value;
- const details=document.getElementById("details").value.trim();
- if(!details)return;
- orders.unshift({id:orders.length+1,service,details});
- document.getElementById("total").textContent=String(orders.length).padStart(2,"0");
- document.getElementById("notice").textContent="Demo order created successfully!";
- orderList.replaceChildren();
- orders.forEach(order=>{
-  const row=document.createElement("div");
-  row.className="order";
-  const title=document.createElement("strong");
-  title.textContent="Demo #"+String(order.id).padStart(3,"0")+" · "+order.service;
-  const detail=document.createElement("p");
-  detail.textContent=order.details;
-  const status=document.createElement("span");
-  status.className="status";
-  status.textContent="Demo only";
-  row.append(title,detail,status);
-  orderList.appendChild(row);
- });
- form.reset();
-});
 </script>
  <div style="position:fixed;bottom:20px;right:16px;z-index:9999">
   <a href="https://wa.me/919140553168?text=Hello%2C%20mujhe%20My%20SMM%20Panel%20se%20service%20order%20karni%20hai." target="_blank" rel="noopener" style="display:inline-block;background:#25D366;color:white;padding:14px 18px;border-radius:30px;text-decoration:none;font-weight:bold;box-shadow:0 4px 12px #0003">
