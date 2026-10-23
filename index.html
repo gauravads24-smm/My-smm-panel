@@ -191,8 +191,25 @@ document.querySelectorAll("[data-service]").forEach(link=>{
   document.getElementById("service").value=link.dataset.service;
  });
 });
-form.addEventListener("submit",event=>{
- event.preventDefault();
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const service = document.getElementById("service").value;
+  const details = document.getElementById("details").value.trim();
+
+  if (!details) return;
+
+  const message =
+    "Hello! My SMM Panel se order enquiry:\n" +
+    "Service: " + service + "\n" +
+    "Details: " + details;
+
+  const whatsappURL =
+    "https://wa.me/919140553168?text=" +
+    encodeURIComponent(message);
+
+  window.open(whatsappURL, "_blank");
+});
  const service=document.getElementById("service").value;
  const details=document.getElementById("details").value.trim();
  if(!details)return;
