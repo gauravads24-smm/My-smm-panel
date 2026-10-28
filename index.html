@@ -141,7 +141,50 @@ footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}
   <a class="btn btn-purple" href="#neworder" data-service="Campaign Setup">View Service</a>
  </article>
  <article class="card service">
-  <div class="service-icon">📊</div><h3>Analytics Report</h3>
+  <div class="service-icon">📊</div><h3>Analytic<label for="service">Choose a service</label>
+<select id="service" required>
+  <optgroup label="Instagram">
+    <option>Instagram Followers - Organic Promotion</option>
+    <option>Instagram Likes - Genuine Campaign</option>
+    <option>Instagram Comments - Community Engagement</option>
+    <option>Instagram Reel Views - Promotion</option>
+    <option>Instagram Post Design</option>
+  </optgroup>
+  <optgroup label="YouTube">
+    <option>YouTube Subscribers - Organic Growth</option>
+    <option>YouTube Views - Genuine Promotion</option>
+    <option>YouTube Likes - Audience Engagement</option>
+    <option>YouTube Comments - Community Engagement</option>
+    <option>YouTube Thumbnail Design</option>
+  </optgroup>
+  <optgroup label="Facebook">
+    <option>Facebook Page Growth</option>
+    <option>Facebook Post Design</option>
+    <option>Facebook Video Promotion</option>
+    <option>Facebook Community Management</option>
+  </optgroup>
+  <optgroup label="Telegram">
+    <option>Telegram Channel Promotion</option>
+    <option>Telegram Community Growth</option>
+    <option>Telegram Post Design</option>
+  </optgroup>
+  <optgroup label="X - Twitter">
+    <option>X Profile Growth Strategy</option>
+    <option>X Post Engagement Campaign</option>
+    <option>X Thread Writing</option>
+  </optgroup>
+  <optgroup label="TikTok">
+    <option>TikTok Video Promotion</option>
+    <option>TikTok Likes - Genuine Campaign</option>
+    <option>TikTok Video Editing</option>
+  </optgroup>
+  <optgroup label="Other Services">
+    <option>Social Media Content Calendar</option>
+    <option>Social Media Analytics Report</option>
+    <option>Social Media Campaign Setup</option>
+  </optgroup>
+</select>
+   s Report</h3>
   <p>Review engagement metrics and campaign performance.</p>
   <a class="btn btn-purple" href="#neworder" data-service="Analytics Report">View Service</a>
  </article>
@@ -152,13 +195,7 @@ footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}
   <h2 style="margin-top:0">＋ New Demo Order</h2>
   <p class="sub">Try the form. It will not charge you or contact any provider.</p>
   <form id="orderForm">
-   <label for="service">Choose a service</label>
-   <select id="service" required>
-    <option>Post Design</option>
-    <option>Content Calendar</option>
-    <option>Campaign Setup</option>
-    <option>Analytics Report</option>
-   </select>
+
    <label for="details">Project details</label>
    <textarea id="details" maxlength="300" placeholder="Describe what you need..." required></textarea>
    <button class="btn btn-purple" type="submit">Create Demo Order →</button>
